@@ -1,0 +1,21 @@
+{
+  "useTabs": true,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": [
+        ".yml",
+        ".yaml"
+      ],
+      "options": {
+        "useTabs": false,
+        "tabWidth": 2
+      }
+    }
+  ]
+}

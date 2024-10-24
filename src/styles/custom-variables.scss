@@ -1,0 +1,258 @@
+$primary: #CE1010;
+$success: #5CB85C;
+$success-dark: #1C381C;
+$info: #5BC0DE;
+$secondary: #9A9A9A;
+$light: #F7F7F7;
+$warning: #F0AD4E;
+$danger: #D9534F;
+$dark: #292B2C;
+$light-blue: #003da2;
+$purple-light: #9C00B6;
+
+$primary-dark: #930000;
+$primary-light: #FAC9C9;
+$secondary-light: #D6D6D6;
+$secondary-dark: #474747;
+
+$magenta: #E05194;
+$salmon: #FF8D85;
+$taupe: #CCAC93;
+$teal: #158FAD;
+$berry-red: #B8255F;
+
+$fs-3: calc(1.3rem + .6vw);
+$fs-4: calc(1.275rem + .6vw);
+$fs-5: 1.25rem;
+$fs-6: 1rem;
+$fs-7: 0.8rem;
+$fs-8: 0.6rem;
+
+
+$theme-colors: () !default;
+$utilities: () !default;
+
+$custom-theme-colors: (
+        "primary": $primary,
+        "success": $success,
+        "success-dark": $success-dark,
+        "info": $info,
+        "purple-light": $purple-light,
+        "secondary": $secondary,
+        "light": $light,
+        "warning": $warning,
+        "danger": $danger,
+        "dark": $dark,
+        "primary-dark": $primary-dark,
+        "primary-light": $primary-light,
+        "secondary-light": $secondary-light,
+        "secondary-dark": $secondary-dark,
+        "magenta": $magenta,
+        "salmon": $salmon,
+        "taupe": $taupe,
+        "teal": $teal,
+        "berry-red": $berry-red
+);
+
+$myUtilities: (
+        "width": (
+                property: width,
+                class: w,
+                values:(
+                        10: 10%,
+                        15: 15%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        45: 45%,
+                        50: 50%,
+                        60: 60%,
+                        65: 65%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        85: 85%,
+                        90: 90%,
+                        95: 95%,
+                        96: 96%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "max-width": (
+                property: max-width,
+                class: mw,
+                values:(
+                        10: 10%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        85: 85%,
+                        90: 90%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "height": (
+                property: height,
+                class: h,
+                values:(
+                        5: 5%,
+                        10: 10%,
+                        15: 15%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        85: 85%,
+                        90: 90%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "max-height": (
+                property: max-height,
+                class: mh,
+                values:(
+                        5: 5%,
+                        10: 10%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        90: 90%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "top":(
+                property: top,
+                class: top,
+                values:(
+                        5: 5%,
+                        10: 10%,
+                        12: 12%,
+                        15: 15%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        90: 90%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "right":(
+                property: right,
+                class: right,
+                values:(
+                        1: 1.7%,
+                        2: 2%,
+                        8: 8%,
+                        9: 9%,
+                        10: 10%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        90: 90%,
+                        95: 95%,
+                        97: 97%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "left":(
+                property: left,
+                class: left,
+                values:(
+                        1: 1%,
+                        2: 2%,
+                        2.5: 2.5%,
+                        5: 5%,
+                        9: -9%,
+                        10: 10%,
+                        15: 15%,
+                        12: 12.5%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        45: 45%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        90: 90%,
+                        95: 95%,
+                        96: 96%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+        "bottom":(
+                property: bottom,
+                class: bottom,
+                values:(
+                        0: 0%,
+                        1: 1%,
+                        2: 2%,
+                        5: 5%,
+                        10: 10%,
+                        20: 20%,
+                        25: 25%,
+                        30: 30%,
+                        35: 35%,
+                        40: 40%,
+                        50: 50%,
+                        60: 60%,
+                        70: 70%,
+                        75: 75%,
+                        80: 80%,
+                        90: 90%,
+                        95: 95%,
+                        100: 100%,
+                        auto: auto
+                )
+        ),
+);
+
+
+$utilities: map-merge($utilities, $myUtilities);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);

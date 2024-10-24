@@ -1,0 +1,145 @@
+@import "custom-variables";
+
+.btn-pointer {
+  cursor: pointer;
+}
+
+//////////////////////////////
+
+.dark-info {
+  background-color: $dark;
+  border: 1px solid $info;
+  color: $info;
+}
+
+.dark-info:hover {
+  background-color: $info;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-purple-light {
+  background-color: $dark;
+  border: 1px solid $purple-light;
+  color: $purple-light;
+}
+
+.dark-purple-light:hover {
+  background-color: $purple-light;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-danger {
+  background-color: $dark;
+  border: 1px solid $danger;
+  color: $danger;
+}
+
+.dark-danger:hover {
+  background-color: $danger;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-primary {
+  background-color: $dark;
+  border: 1px solid $primary;
+  color: $primary;
+}
+
+.dark-primary:hover {
+  background-color: $primary;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-warning {
+  background-color: $dark;
+  border: 1px solid $warning;
+  color: $warning;
+}
+
+.dark-warning:hover {
+  background-color: $warning;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-success {
+  background-color: $dark;
+  border: 1px solid $success;
+  color: $success;
+}
+
+.dark-success:hover {
+  background-color: $success;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-light {
+  background-color: $dark;
+  border: 1px solid $light;
+  color: $light;
+}
+
+.dark-light:hover {
+  background-color: $light;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.dark-light:disabled {
+  background-color: $secondary-dark;
+  border: 1px solid $dark;
+  color: $secondary-light;
+}
+
+.light-dark {
+  background-color: $light;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.light-dark:hover {
+  background-color: $dark;
+  border: 1px solid $light;
+  color: $light;
+}
+
+.info-light {
+  background-color: $info;
+  border: 1px solid $light;
+  color: $light;
+}
+
+.info-light:hover {
+  background-color: $light;
+  border: 1px solid $info;
+  color: $info;
+}
+
+.success-dark {
+  background-color: $success;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.success-dark:hover {
+  background-color: $dark;
+  border: 1px solid $success;
+  color: $success;
+}
+
+.info-dark {
+  background-color: $info;
+  border: 1px solid $dark;
+  color: $dark;
+}
+
+.info-dark:hover {
+  background-color: $dark;
+  border: 1px solid $info;
+  color: $info;
+}
