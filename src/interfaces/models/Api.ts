@@ -1,9 +1,9 @@
-import { Roles } from '../enums/Roles';
+import { Role } from '../enums/Role';
 
 export interface UserModel {
 	userId: string;
 	username: string;
-	roles: Roles[];
+	role: Role;
 	enabled: boolean;
+	firstLogin: boolean;
 }
-

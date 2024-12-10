@@ -6,7 +6,7 @@ import Header from '../../components/Header/Header';
 import Pending from '../../components/Pending/Pending';
 import MainWrapper from '../../components/Wrappers/MainWrapper';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-// import background from '../../images/home.jpg';
+import background from '../../images/login_register.jpg';
 
 const Home = () => {
 	const { currentUser, isPending, onClearUser } = useCurrentUser();
@@ -20,10 +20,10 @@ const Home = () => {
 	}
 
 	return (
-		<BackgroundImageContainer src={`//background`} className={'w-100 h-100'}>
+		<BackgroundImageContainer src={background} className={'w-100 h-100'}>
 			<Header>
 				<div>
-					<h3 className="text-light mb-0">Welcome to Digital Library</h3>
+					<h3 className="text-light mb-0">Welcome to Car Rental service</h3>
 				</div>
 			</Header>
 

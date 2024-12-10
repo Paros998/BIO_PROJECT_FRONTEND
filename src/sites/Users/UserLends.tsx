@@ -14,7 +14,7 @@ interface UserLendsProps {
 // OLD
 const UserLends: FC<UserLendsProps> = ({ userId }) => {
 	return (
-		<BackgroundImageContainer src={"//background"} className={'w-100 h-100'}>
+		<BackgroundImageContainer src={'//background'} className={'w-100 h-100'}>
 			<Header>
 				<div className={`d-flex gap-3`}>
 					<BackButtonArrowCircle />
@@ -23,7 +23,7 @@ const UserLends: FC<UserLendsProps> = ({ userId }) => {
 			</Header>
 
 			<MainWrapper className="px-4 py-2 h-100 d-flex align-items-center justify-content-center overflow-scroll overflow-x-hidden thumb-dark ">
-
+				<></>
 			</MainWrapper>
 
 			<Footer />

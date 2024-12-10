@@ -1,10 +1,10 @@
-import { Context, createContext, FC, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
+import { Context, createContext, FC, ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
-import { Roles } from '../../interfaces/enums/Roles';
+import { Role } from '../../interfaces/enums/Role';
 import { JwtUser } from '../../interfaces/JwtUser';
 import { UserModel } from '../../interfaces/models/Api';
 import { UserContextInterface } from '../../interfaces/models/UserContextInterface';
@@ -20,12 +20,10 @@ interface ProviderProps {
 const CurrentUserProvider: FC<ProviderProps> = ({ children }) => {
 	const navigate = useNavigate();
 	const [currentUser, setCurrentUser] = useState<UserModel>();
-	const [roles, setRoles] = useState<Roles[]>();
+	const [roles, setRoles] = useState<Role[]>();
 	const [isPending, setIsPending] = useState(false);
 
 	const onClearUser = async () => {
-		setCurrentUser(undefined);
-
 		await onLogOut();
 	};
 
@@ -47,9 +45,9 @@ const CurrentUserProvider: FC<ProviderProps> = ({ children }) => {
 		const { userId }: JwtUser = jwtDecode(token);
 
 		try {
-			const { data } = await Axios.get<UserModel>(`/users/find/${userId}`);
+			const { data } = await Axios.get<UserModel>(`/users/${userId}`);
 			setCurrentUser(data);
-			setRoles(data.roles);
+			setRoles([data.role]);
 		} catch (e: any) {
 			toast.error(e);
 		} finally {
@@ -78,16 +76,17 @@ const CurrentUserProvider: FC<ProviderProps> = ({ children }) => {
 		await fetchUser();
 	};
 
-	// TODO useMemo
-	const contextData = {
-		currentUser,
-		fetchUser,
-		isPending,
-		setIsPending,
-		onLogOut,
-		onClearUser,
-		roles
-	};
+	const contextData = useMemo(() => {
+		return {
+			currentUser,
+			fetchUser,
+			isPending,
+			setIsPending,
+			onLogOut,
+			onClearUser,
+			roles
+		};
+	}, [currentUser, isPending]);
 
 	// eslint-disable-next-line react/react-in-jsx-scope
 	return <UserContext.Provider value={contextData}>{children}</UserContext.Provider>;

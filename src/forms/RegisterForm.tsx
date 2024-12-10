@@ -16,7 +16,7 @@ const RegisterForm = () => {
 	return (
 		<Form className={`h-80 w-100 py-2 d-flex flex-column justify-content-around`}>
 			<FormBoot.Group className={formGroup}>
-				<FormBoot.Label className={formLabel}>Username</FormBoot.Label>
+				<FormBoot.Label className={formLabel}>Email</FormBoot.Label>
 				<FormBoot.Control
 					type={`text`}
 					className={formControl}

@@ -3,9 +3,12 @@ import Axios from 'axios';
 
 import { useCurrentUser } from '../contexts/UserContext/UserContext';
 
-Axios.defaults.baseURL = `http://localhost:8080/api`;
+export const baseUrl = `http://localhost:8080/`;
+export const endpointsPrefix = `api`;
 
 export const useInitAxios = () => {
+	Axios.defaults.baseURL = baseUrl + endpointsPrefix;
+
 	const [errorCode, setErrorCode] = useState();
 	const { onClearUser } = useCurrentUser();
 

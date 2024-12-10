@@ -23,7 +23,7 @@ export const useFetchData = <T>(endpoint: string, config?: UseFetchDataConfig<T>
 		setIsPending(true);
 		try {
 			const { data: fetchedData } = await Axios.get<T>(endpoint, { params });
-			const resultData = dataMapper?.(fetchedData) || fetchedData;
+			const resultData = dataMapper?.(fetchedData) ?? fetchedData;
 			setData(resultData);
 		} catch (e) {
 			toast.error("Couldn't fetch data");

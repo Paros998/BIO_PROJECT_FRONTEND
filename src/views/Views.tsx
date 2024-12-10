@@ -3,10 +3,11 @@ import React from 'react';
 import Pending from '../components/Pending/Pending';
 import { useCurrentUser } from '../contexts/UserContext/UserContext';
 import { useInitAxios } from '../hooks/useInitAxios';
-import { Roles } from '../interfaces/enums/Roles';
+import { Role } from '../interfaces/enums/Role';
 
 import AdminViews from './AuthorisedViews/AdminViews';
-import UserViews from './AuthorisedViews/UserViews';
+import ClientViews from './AuthorisedViews/ClientViews';
+import EmployeeViews from './AuthorisedViews/EmployeeViews';
 import UnauthorisedViews from './UnauthorisedViews/UnauthorisedViews';
 
 const Views = () => {
@@ -15,9 +16,11 @@ const Views = () => {
 
 	if (isPending) return <Pending />;
 
-	if (roles && roles.includes(Roles.RoleAdmin)) return <AdminViews />;
+	if (roles?.includes(Role.RoleAdmin)) return <AdminViews />;
 
-	if (roles && roles.includes(Roles.RoleUser)) return <UserViews />;
+	if (roles?.includes(Role.RoleEmployee)) return <EmployeeViews />;
+
+	if (roles?.includes(Role.RoleClient)) return <ClientViews />;
 
 	return <UnauthorisedViews />;
 };

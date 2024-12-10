@@ -11,7 +11,8 @@ import Header from '../../components/Header/Header';
 import MainWrapper from '../../components/Wrappers/MainWrapper';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import LoginForm from '../../forms/LoginForm';
-// import loginBg from '../../images/login_register.jpg';
+import { baseUrl, endpointsPrefix } from '../../hooks/useInitAxios';
+import loginBg from '../../images/login_register.jpg';
 import { LoginFormikValues } from '../../interfaces/formik/LoginFormikValues';
 import { RegisterRoute } from '../../routes/Routes';
 import { appendUrlSearchParams } from '../../utils/appendUrlSearchParams';
@@ -22,7 +23,7 @@ const LoginFormikInitialValues: LoginFormikValues = {
 };
 
 const LoginFormValidationSchema = yup.object().shape({
-	username: yup.string().required(`Username cannot be empty`),
+	username: yup.string().required(`Email cannot be empty`).email(`Not a valid email address`),
 	password: yup.string().required(`Password cannot be empty`)
 });
 
@@ -35,7 +36,9 @@ const Login = () => {
 		const loginParams = appendUrlSearchParams(values);
 		try {
 			setIsPending(true);
-			const { headers } = await Axios.post('/auth/login', loginParams);
+			Axios.defaults.baseURL = baseUrl;
+			const { headers } = await Axios.post('/login', loginParams);
+			Axios.defaults.baseURL = baseUrl + endpointsPrefix;
 
 			const accessToken = headers.authorization;
 			Axios.defaults.headers.common.Authorization = accessToken;
@@ -47,14 +50,12 @@ const Login = () => {
 
 			await fetchUser();
 		} catch (e: any) {
-			toast.error('Username or Password incorrect');
-		} finally {
-			setIsPending(false);
+			toast.error('Email or Password incorrect');
 		}
 	};
 
 	return (
-		<BackgroundImageContainer src={`//loginBg`} className={'w-100 h-100'}>
+		<BackgroundImageContainer src={loginBg} className={'w-100 h-100'}>
 			<Header>
 				{logout ? (
 					<>

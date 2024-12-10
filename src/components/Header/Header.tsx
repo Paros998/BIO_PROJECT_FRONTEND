@@ -3,7 +3,7 @@ import { Button, Dropdown } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { Roles } from '../../interfaces/enums/Roles';
+import { Role } from '../../interfaces/enums/Role';
 
 interface HeaderProps {
 	children: ReactNode;
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({ children }) => {
 					{/*	</Button>*/}
 					{/*)}*/}
 
-					{roles?.includes(Roles.RoleAdmin) && (
+					{roles?.includes(Role.RoleAdmin) && (
 						<>
 							<Dropdown className={`me-4`}>
 								<Dropdown.Toggle variant="outline-info" id="dropdown-basic">
