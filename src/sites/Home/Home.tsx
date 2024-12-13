@@ -4,6 +4,7 @@ import BackgroundImageContainer from '../../components/BackgroundImageContainer/
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Pending from '../../components/Pending/Pending';
+import Vehicles from '../../components/Vehicles/Vehicles';
 import MainWrapper from '../../components/Wrappers/MainWrapper';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import background from '../../images/login_register.jpg';
@@ -27,8 +28,8 @@ const Home = () => {
 				</div>
 			</Header>
 
-			<MainWrapper className="px-4 py-2 h-100 d-flex align-items-center justify-content-center overflow-scroll overflow-x-hidden thumb-dark ">
-				<></>
+			<MainWrapper className="px-4 py-2 h-100 d-flex align-items-center justify-content-center overflow-scroll overflow-x-hidden thumb-dark mt-4">
+				<Vehicles />
 			</MainWrapper>
 
 			<Footer />

@@ -50,6 +50,11 @@ const CurrentUserProvider: FC<ProviderProps> = ({ children }) => {
 			setRoles([data.role]);
 		} catch (e: any) {
 			toast.error(e);
+			const status = e?.response?.status;
+
+			if (status === 404) {
+				await onClearUser();
+			}
 		} finally {
 			setIsPending(false);
 		}

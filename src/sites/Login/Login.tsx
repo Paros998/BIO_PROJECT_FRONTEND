@@ -71,7 +71,7 @@ const Login = () => {
 				)}
 			</Header>
 
-			<MainWrapper className={`text-light mt-2`}>
+			<MainWrapper className={`text-light mt-4`}>
 				<div className="d-flex flex-column bg-secondary-dark rounded-card-10 container-fluid align-items-center justify-content-center rounded p-4 w-75">
 					<h4>Provide login data.</h4>
 
