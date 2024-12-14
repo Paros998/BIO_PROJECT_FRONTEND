@@ -7,7 +7,7 @@ import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { HomeRoute } from '../../routes/Routes';
 import Home from '../../sites/Home/Home';
 
-const ClientViews = () => {
+const EmployeeViews = () => {
 	const { isPending } = useCurrentUser();
 
 	if (isPending) return <Pending />;
@@ -21,4 +21,4 @@ const ClientViews = () => {
 	);
 };
 
-export default ClientViews;
+export default EmployeeViews;
