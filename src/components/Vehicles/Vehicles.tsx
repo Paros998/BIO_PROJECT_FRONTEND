@@ -77,8 +77,6 @@ const Vehicles = () => {
 			</div>
 		</div>
 	);
-
-	return <div></div>;
 };
 
 export default Vehicles;
