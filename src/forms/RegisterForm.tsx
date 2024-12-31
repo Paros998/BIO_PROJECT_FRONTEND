@@ -3,18 +3,15 @@ import { Form as FormBoot } from 'react-bootstrap';
 import { Form, useFormikContext } from 'formik';
 
 import SubmitFormButton from '../components/SubmitButton/SubmitFormButton';
-import { LoginFormikValues } from '../interfaces/formik/LoginFormikValues';
+import { LoginFormikValues } from '../interfaces/formik/Formiks';
+
+import { divider, errorSpan, form, formControl, formGroup, formLabel, submitButton } from './FormStyles';
 
 const RegisterForm = () => {
-	const formGroup = `mx-3 my-1 fw-light w-50 align-self-center`;
-	const formLabel = `position-relative left-10 fs-4`;
-	const formControl = `rounded-pill px-3 w-100 bg-light text-dark`;
-	const errorSpan = `text-danger position-relative left-10`;
-
 	const { handleChange, errors, touched } = useFormikContext<LoginFormikValues>();
 
 	return (
-		<Form className={`h-80 w-100 py-2 d-flex flex-column justify-content-around`}>
+		<Form className={form}>
 			<FormBoot.Group className={formGroup}>
 				<FormBoot.Label className={formLabel}>Email</FormBoot.Label>
 				<FormBoot.Control
@@ -47,9 +44,9 @@ const RegisterForm = () => {
 				</span>
 			</FormBoot.Group>
 
-			<hr className={`my-4 w-50 align-self-center position-relative left-5`} />
+			<hr className={divider} />
 
-			<SubmitFormButton variant={`info`} className={`w-25 align-self-center rounded-pill text-light`}>
+			<SubmitFormButton variant={`info`} className={submitButton}>
 				Register Account
 			</SubmitFormButton>
 		</Form>

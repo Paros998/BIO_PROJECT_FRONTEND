@@ -6,7 +6,7 @@ import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { HomeRoute } from '../../routes/Routes';
 import Home from '../../sites/Home/Home';
-import FirstLogin from '../../sites/Login/FirstLogin';
+import ClientFirstLogin from '../../sites/Login/ClientFirstLogin';
 
 const ClientViews = () => {
 	const { isPending, currentUser } = useCurrentUser();
@@ -23,7 +23,7 @@ const ClientViews = () => {
 	if (currentUser.firstLogin) {
 		return (
 			<Routes>
-				<Route path={HomeRoute} element={<FirstLogin />} />
+				<Route path={HomeRoute} element={<ClientFirstLogin />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>

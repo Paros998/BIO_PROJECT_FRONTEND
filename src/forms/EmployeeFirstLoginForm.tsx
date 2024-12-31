@@ -3,33 +3,17 @@ import { Form as FormBoot } from 'react-bootstrap';
 import { Form, useFormikContext } from 'formik';
 
 import SubmitFormButton from '../components/SubmitButton/SubmitFormButton';
-import { LoginFormikValues } from '../interfaces/formik/Formiks';
+import { FinishFirstLoginFormikValues } from '../interfaces/formik/Formiks';
 
 import { divider, errorSpan, form, formControl, formGroup, formLabel, submitButton } from './FormStyles';
 
-const LoginForm = () => {
-	const { handleChange, errors, touched } = useFormikContext<LoginFormikValues>();
+const EmployeeFirstLoginForm = () => {
+	const { handleChange, errors, touched } = useFormikContext<FinishFirstLoginFormikValues>();
 
 	return (
 		<Form className={form}>
 			<FormBoot.Group className={formGroup}>
-				<FormBoot.Label className={formLabel}>Email</FormBoot.Label>
-				<FormBoot.Control
-					type={`text`}
-					className={formControl}
-					name={`username`}
-					onChange={handleChange}
-					isInvalid={touched.username && !!errors.username}
-					isValid={touched.username && !errors.username}
-				/>
-
-				<span id={'username-error'} className={errorSpan}>
-					{errors.username}
-				</span>
-			</FormBoot.Group>
-
-			<FormBoot.Group className={formGroup}>
-				<FormBoot.Label className={formLabel}>Password</FormBoot.Label>
+				<FormBoot.Label className={formLabel}>New Password</FormBoot.Label>
 				<FormBoot.Control
 					type={`password`}
 					className={formControl}
@@ -47,10 +31,10 @@ const LoginForm = () => {
 			<hr className={divider} />
 
 			<SubmitFormButton variant={`info`} className={submitButton}>
-				Login
+				Submit password change
 			</SubmitFormButton>
 		</Form>
 	);
 };
 
-export default LoginForm;
+export default EmployeeFirstLoginForm;

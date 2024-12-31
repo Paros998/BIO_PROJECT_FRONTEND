@@ -11,7 +11,7 @@ import Header from '../../components/Header/Header';
 import MainWrapper from '../../components/Wrappers/MainWrapper';
 import RegisterForm from '../../forms/RegisterForm';
 import loginBg from '../../images/login_register.jpg';
-import { RegisterFormikValues } from '../../interfaces/formik/RegisterFormikValues';
+import { RegisterFormikValues } from '../../interfaces/formik/Formiks';
 import { LoginRoute } from '../../routes/Routes';
 
 const RegisterFormikInitialValues: RegisterFormikValues = {
@@ -39,7 +39,7 @@ const Register = () => {
 
 			navigate('/login');
 		} catch (e: any) {
-			if (e.response?.status === 406) {
+			if (e.response?.status === 422) {
 				toast.error('Email is already taken, please choose different one.');
 			} else {
 				toast.error('Error occurred during registering, please try again later.');

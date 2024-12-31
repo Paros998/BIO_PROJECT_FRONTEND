@@ -13,7 +13,7 @@ import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import LoginForm from '../../forms/LoginForm';
 import { baseUrl, endpointsPrefix } from '../../hooks/useInitAxios';
 import loginBg from '../../images/login_register.jpg';
-import { LoginFormikValues } from '../../interfaces/formik/LoginFormikValues';
+import { LoginFormikValues } from '../../interfaces/formik/Formiks';
 import { RegisterRoute } from '../../routes/Routes';
 import { appendUrlSearchParams } from '../../utils/appendUrlSearchParams';
 

@@ -5,8 +5,8 @@ import Axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 import { Role } from '../../interfaces/enums/Role';
-import { JwtUser } from '../../interfaces/JwtUser';
 import { UserModel } from '../../interfaces/models/Api';
+import { JwtUser } from '../../interfaces/models/JwtUser';
 import { UserContextInterface } from '../../interfaces/models/UserContextInterface';
 
 const UserContext = createContext<any>(undefined);

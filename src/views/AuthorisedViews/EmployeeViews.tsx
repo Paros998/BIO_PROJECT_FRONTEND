@@ -6,11 +6,29 @@ import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { HomeRoute } from '../../routes/Routes';
 import Home from '../../sites/Home/Home';
+import EmployeeFirstLogin from '../../sites/Login/EmployeeFirstLogin';
 
 const EmployeeViews = () => {
-	const { isPending } = useCurrentUser();
+	const { isPending, currentUser } = useCurrentUser();
 
 	if (isPending) return <Pending />;
+
+	if (!currentUser)
+		return (
+			<Routes>
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		);
+
+	if (currentUser.firstLogin) {
+		return (
+			<Routes>
+				<Route path={HomeRoute} element={<EmployeeFirstLogin />} />
+
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		);
+	}
 
 	return (
 		<Routes>
