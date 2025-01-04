@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { Role } from '../../interfaces/enums/Role';
-import { MyRentedVehicles } from '../../routes/Routes';
+import { HomeRoute, MyRentedVehicles } from '../../routes/Routes';
 
 import AdminHeader from './AdminHeader';
 import ClientHeader from './ClientHeader';
@@ -25,6 +25,15 @@ const Header: FC<HeaderProps> = ({ children }) => {
 				{children}
 
 				<div className={`d-inline-flex justify-content-end`}>
+					<Button
+						variant={'outline-primary-dark'}
+						disabled={location?.pathname === HomeRoute}
+						className={`me-4`}
+						onClick={() => navigate(HomeRoute)}
+					>
+						Home
+					</Button>
+
 					{currentUser && roles?.includes(Role.RoleClient) && (
 						<Button
 							variant={'outline-primary-light'}
@@ -32,7 +41,7 @@ const Header: FC<HeaderProps> = ({ children }) => {
 							className={`me-4`}
 							onClick={() => navigate(MyRentedVehicles)}
 						>
-							My lent books
+							My Rented Vehicles
 						</Button>
 					)}
 

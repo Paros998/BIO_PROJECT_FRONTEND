@@ -4,7 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { EmployeesRoute, HomeRoute, NewEmployeeRoute } from '../../routes/Routes';
+import { ClientsRoute, EmployeesRoute, HomeRoute, NewEmployeeRoute } from '../../routes/Routes';
+import ManageClients from '../../sites/Clients/ManageClients';
 import ManageEmployees from '../../sites/Employees/ManageEmployees';
 import NewEmployee from '../../sites/Employees/NewEmployee';
 import Home from '../../sites/Home/Home';
@@ -28,6 +29,8 @@ const AdminViews = () => {
 			<Route path={NewEmployeeRoute} element={<NewEmployee />} />
 
 			<Route path={EmployeesRoute} element={<ManageEmployees />} />
+
+			<Route path={ClientsRoute} element={<ManageClients />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>

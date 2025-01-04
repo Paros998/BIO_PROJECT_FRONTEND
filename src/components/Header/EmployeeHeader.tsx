@@ -2,6 +2,8 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+import { ClientsRoute } from '../../routes/Routes';
+
 const EmployeeHeader = () => {
 	const navigate = useNavigate();
 	return (
@@ -25,8 +27,7 @@ const EmployeeHeader = () => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
-					<Dropdown.Item>Clients</Dropdown.Item>
-					<Dropdown.Item>Clients Lends</Dropdown.Item>
+					<Dropdown.Item onClick={() => navigate(ClientsRoute)}>Clients</Dropdown.Item>
 					<Dropdown.Item>Clients Payments</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>

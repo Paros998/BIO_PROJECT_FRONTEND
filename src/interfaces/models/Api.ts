@@ -23,17 +23,25 @@ export interface VehicleModel {
 	rentPerDayPrice: string;
 }
 
-export interface EmployeeModel {
+export interface UserPersonalData {
 	userId: string;
-	employeeId: string;
 	email: string;
 	isActive: boolean;
 	firstLoginDone: boolean;
-	isAdmin: boolean;
 	firstName: string;
 	lastName: string;
 	phoneNumber: string;
 	nationalId: string;
+}
+
+export interface EmployeeModel extends UserPersonalData {
+	employeeId: string;
+	isAdmin: boolean;
+}
+
+export interface ClientModel extends UserPersonalData {
+	duePaymentsCount: number;
+	rentedCarsCount: number;
 }
 
 export interface PageResponse<T> {

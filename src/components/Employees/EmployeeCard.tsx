@@ -45,6 +45,7 @@ const EmployeeCard: FC<EmployeeCardProps> = ({ employee, fetchEmployees }) => {
 						Toggle id showing
 					</Button>
 				</div>
+
 				<div className={`d-flex justify-content-between align-items-center`}>
 					<Card.Text className={`text-truncate d-flex align-items-center gap-2`}>
 						Account active:
@@ -59,6 +60,7 @@ const EmployeeCard: FC<EmployeeCardProps> = ({ employee, fetchEmployees }) => {
 						</Button>
 					)}
 				</div>
+
 				<Card.Text className={`text-truncate d-flex align-items-center gap-2`}>
 					First login done:
 					<div className={`d-flex align-items-center gap-2 ${firstLoginDone ? 'text-success' : 'text-danger'}`}>
