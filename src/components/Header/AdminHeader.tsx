@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-import { NewEmployeeRoute } from '../../routes/Routes';
+import { EmployeesRoute, NewEmployeeRoute } from '../../routes/Routes';
 
 const AdminHeader = () => {
 	const navigate = useNavigate();
@@ -28,7 +28,7 @@ const AdminHeader = () => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
-					<Dropdown.Item>Employees</Dropdown.Item>
+					<Dropdown.Item onClick={() => navigate(EmployeesRoute)}>Employees</Dropdown.Item>
 					<Dropdown.Item onClick={() => navigate(NewEmployeeRoute)}>Register New Employee</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>

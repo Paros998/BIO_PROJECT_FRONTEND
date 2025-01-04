@@ -15,6 +15,7 @@ import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import RegisterNewEmployeeForm from '../../forms/RegisterNewEmployeeForm';
 import background from '../../images/login_register.jpg';
 import { CreateEmployeeFormikValues } from '../../interfaces/formik/Formiks';
+import { EmployeesRoute } from '../../routes/Routes';
 
 const CreateEmployeeFormikInitialValues: CreateEmployeeFormikValues = {
 	username: '',
@@ -48,7 +49,7 @@ const NewEmployee: FC = () => {
 
 			toast.success('Employee registered successfully, he may proceed to do first login.');
 
-			navigate('/employees');
+			navigate(EmployeesRoute);
 		} catch (e: any) {
 			if (e.response?.status === 422) {
 				toast.error('Employee email is already taken, please choose different one.');

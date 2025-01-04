@@ -23,6 +23,19 @@ export interface VehicleModel {
 	rentPerDayPrice: string;
 }
 
+export interface EmployeeModel {
+	userId: string;
+	employeeId: string;
+	email: string;
+	isActive: boolean;
+	firstLoginDone: boolean;
+	isAdmin: boolean;
+	firstName: string;
+	lastName: string;
+	phoneNumber: string;
+	nationalId: string;
+}
+
 export interface PageResponse<T> {
 	currentPage: number;
 	totalPages: number;

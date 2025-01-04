@@ -3,6 +3,7 @@ export const HomeRoute = '/';
 
 // admin
 export const NewEmployeeRoute = '/employees/new';
+export const EmployeesRoute = '/employees';
 
 // employee
 
