@@ -44,6 +44,26 @@ export interface ClientModel extends UserPersonalData {
 	rentedCarsCount: number;
 }
 
+export interface ClientRentedVehicles {
+	client: ClientModel;
+	vehicles: RentedVehicle[];
+}
+
+export interface RentedVehicle {
+	vehicle: VehicleModel;
+	rental: RentalModel;
+}
+
+export interface RentalModel {
+	rentalId: string;
+	clientId: string;
+	vehicleId: string;
+	approvingEmployeeId: string;
+	startDate: string;
+	endDate: string;
+	paymentsFeesPaid: boolean;
+}
+
 export interface PageResponse<T> {
 	currentPage: number;
 	totalPages: number;

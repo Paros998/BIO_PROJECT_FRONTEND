@@ -4,7 +4,15 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { ClientsRoute, EmployeesRoute, HomeRoute, NewEmployeeRoute } from '../../routes/Routes';
+import {
+	ClientIdVariable,
+	ClientRentedCarsRoute,
+	ClientsRoute,
+	EmployeesRoute,
+	HomeRoute,
+	NewEmployeeRoute
+} from '../../routes/Routes';
+import ClientRentedCars from '../../sites/Clients/ClientRentedCars';
 import ManageClients from '../../sites/Clients/ManageClients';
 import ManageEmployees from '../../sites/Employees/ManageEmployees';
 import NewEmployee from '../../sites/Employees/NewEmployee';
@@ -31,6 +39,8 @@ const AdminViews = () => {
 			<Route path={EmployeesRoute} element={<ManageEmployees />} />
 
 			<Route path={ClientsRoute} element={<ManageClients />} />
+
+			<Route path={ClientRentedCarsRoute + ClientIdVariable} element={<ClientRentedCars />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>

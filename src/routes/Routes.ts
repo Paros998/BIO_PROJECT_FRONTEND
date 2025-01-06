@@ -16,3 +16,6 @@ export const MyRentedVehicles = '/rented-vehicles';
 // anonymous
 export const LoginRoute = '/login';
 export const RegisterRoute = '/register';
+
+// path variables
+export const ClientIdVariable = '/:clientId';

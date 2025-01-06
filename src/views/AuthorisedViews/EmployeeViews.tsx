@@ -4,7 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { ClientsRoute, HomeRoute } from '../../routes/Routes';
+import { ClientIdVariable, ClientRentedCarsRoute, ClientsRoute, HomeRoute } from '../../routes/Routes';
+import ClientRentedCars from '../../sites/Clients/ClientRentedCars';
 import ManageClients from '../../sites/Clients/ManageClients';
 import Home from '../../sites/Home/Home';
 import EmployeeFirstLogin from '../../sites/Login/EmployeeFirstLogin';
@@ -26,8 +27,6 @@ const EmployeeViews = () => {
 			<Routes>
 				<Route path={HomeRoute} element={<EmployeeFirstLogin />} />
 
-				<Route path={ClientsRoute} element={<ManageClients />} />
-
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		);
@@ -36,6 +35,10 @@ const EmployeeViews = () => {
 	return (
 		<Routes>
 			<Route path={HomeRoute} element={<Home />} />
+
+			<Route path={ClientsRoute} element={<ManageClients />} />
+
+			<Route path={ClientRentedCarsRoute + ClientIdVariable} element={<ClientRentedCars />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>

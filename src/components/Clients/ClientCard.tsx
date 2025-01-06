@@ -11,9 +11,12 @@ import { ClientPendingPaymentsRoute, ClientRentedCarsRoute } from '../../routes/
 export type ClientCardProps = {
 	client: ClientModel;
 	fetchClients: () => Promise<void>;
+	hideRentsCount?: boolean;
+	hidePaymentsCount?: boolean;
+	background?: string;
 };
 
-const ClientCard: FC<ClientCardProps> = ({ client, fetchClients }) => {
+const ClientCard: FC<ClientCardProps> = ({ client, fetchClients, hideRentsCount, hidePaymentsCount, background }) => {
 	const [showId, setShowId] = useState<boolean>(false);
 	const navigate = useNavigate();
 
@@ -43,7 +46,11 @@ const ClientCard: FC<ClientCardProps> = ({ client, fetchClients }) => {
 	};
 
 	return (
-		<Card bg={'dark'} text={'light'} className={`border-light border-1 height-400`}>
+		<Card
+			bg={background ?? 'dark'}
+			text={'light'}
+			className={`border-light border-1 ${hideRentsCount || hidePaymentsCount ? 'height-300' : 'height-400'}`}
+		>
 			<Card.Body className={`d-flex flex-column gap-2`}>
 				<Card.Title className={`text-truncate`}>Client: {firstName + ' ' + lastName || 'Unknown'}</Card.Title>
 				<Card.Text className={`text-truncate`}>Email: {email || 'Unknown'}</Card.Text>
@@ -79,7 +86,7 @@ const ClientCard: FC<ClientCardProps> = ({ client, fetchClients }) => {
 					</div>
 				</Card.Text>
 
-				<div className={`d-flex justify-content-between align-items-center`}>
+				<div className={`d-flex justify-content-between align-items-center ${hideRentsCount && 'd-none'}`}>
 					<Card.Text className={`text-truncate d-flex align-items-center gap-2`}>
 						Currently renting cars:
 						<div className={`d-flex align-items-center gap-2`}>{rentedCarsCount === 0 ? 'None' : rentedCarsCount}</div>
@@ -91,7 +98,7 @@ const ClientCard: FC<ClientCardProps> = ({ client, fetchClients }) => {
 					)}
 				</div>
 
-				<div className={`d-flex justify-content-between align-items-center`}>
+				<div className={`d-flex justify-content-between align-items-center ${hidePaymentsCount && 'd-none'}`}>
 					<Card.Text className={`text-truncate d-flex align-items-center gap-2`}>
 						Client due payments:
 						<div className={`d-flex align-items-center gap-2`}>
