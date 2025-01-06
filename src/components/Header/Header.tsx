@@ -1,9 +1,14 @@
 import React, { FC, ReactNode } from 'react';
-import { Button, Dropdown } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { Role } from '../../interfaces/enums/Role';
+import { HomeRoute, MyRentedVehicles } from '../../routes/Routes';
+
+import AdminHeader from './AdminHeader';
+import ClientHeader from './ClientHeader';
+import EmployeeHeader from './EmployeeHeader';
 
 interface HeaderProps {
 	children: ReactNode;
@@ -20,42 +25,31 @@ const Header: FC<HeaderProps> = ({ children }) => {
 				{children}
 
 				<div className={`d-inline-flex justify-content-end`}>
-					{/*{currentUser && (*/}
-					{/*	<Button*/}
-					{/*		variant={'outline-primary-light'}*/}
-					{/*		disabled={location?.pathname === MyLendsRoute}*/}
-					{/*		className={`me-4`}*/}
-					{/*		onClick={() => navigate(MyLendsRoute)}*/}
-					{/*	>*/}
-					{/*		My lent books*/}
-					{/*	</Button>*/}
-					{/*)}*/}
+					<Button
+						variant={'outline-primary-dark'}
+						disabled={location?.pathname === HomeRoute}
+						className={`me-4`}
+						onClick={() => navigate(HomeRoute)}
+					>
+						Home
+					</Button>
 
-					{roles?.includes(Role.RoleAdmin) && (
-						<>
-							<Dropdown className={`me-4`}>
-								<Dropdown.Toggle variant="outline-info" id="dropdown-basic">
-									Manage Books
-								</Dropdown.Toggle>
-
-								<Dropdown.Menu>
-									<Dropdown.Item>Books</Dropdown.Item>
-									<Dropdown.Item>Stocks</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
-
-							<Dropdown className={`me-4`}>
-								<Dropdown.Toggle variant="outline-warning" id="dropdown-basic">
-									Manage Users
-								</Dropdown.Toggle>
-
-								<Dropdown.Menu>
-									<Dropdown.Item>Users</Dropdown.Item>
-									<Dropdown.Item>User Lends</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
-						</>
+					{currentUser && roles?.includes(Role.RoleClient) && (
+						<Button
+							variant={'outline-primary-light'}
+							disabled={location?.pathname === MyRentedVehicles}
+							className={`me-4`}
+							onClick={() => navigate(MyRentedVehicles)}
+						>
+							My Rented Vehicles
+						</Button>
 					)}
+
+					{roles?.includes(Role.RoleAdmin) && <AdminHeader />}
+
+					{roles?.includes(Role.RoleEmployee) && <EmployeeHeader />}
+
+					{roles?.includes(Role.RoleClient) && <ClientHeader />}
 
 					{currentUser && (
 						<Button variant={'danger'} onClick={() => onLogOut()}>

@@ -9,10 +9,12 @@ import BackgroundImageContainer from '../../components/BackgroundImageContainer/
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import MainWrapper from '../../components/Wrappers/MainWrapper';
+import { phoneRegex } from '../../constants/Regexes';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import FinishRegisterForm from '../../forms/FinishRegisterForm';
 import loginBg from '../../images/login_register.jpg';
-import { FinishRegisterFormikValues } from '../../interfaces/formik/FinishRegisterFormikValues';
+import { FinishRegisterFormikValues } from '../../interfaces/formik/Formiks';
+import { FinishRegisterRequest } from '../../interfaces/models/Api';
 
 const FinishRegisterInitialValues: FinishRegisterFormikValues = {
 	firstName: '',
@@ -21,9 +23,6 @@ const FinishRegisterInitialValues: FinishRegisterFormikValues = {
 	nationalId: ''
 };
 
-const phoneRegex = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/;
-// const nationalIdRegex = /^[+]{1}(?:[0-9\\-\\(\\)\\/\\.]\\s?){9, 9}[0-9]{1}$/;
-
 const FinishRegisterValidationSchema = yup.object().shape({
 	firstName: yup.string().required(`First name cannot be empty`),
 	lastName: yup.string().required(`Last name cannot be empty`),
@@ -31,14 +30,14 @@ const FinishRegisterValidationSchema = yup.object().shape({
 	nationalId: yup.string().required(`National id cannot be empty`)
 });
 
-const FirstLogin = () => {
+const ClientFirstLogin = () => {
 	const { logout } = useParams<{ logout: string }>();
 	const navigate = useNavigate();
 	const { fetchUser, currentUser } = useCurrentUser();
 
 	const handleSubmit = async (finishRegisterBody: FinishRegisterFormikValues) => {
 		try {
-			await Axios.post(`/users/finish-register/${currentUser?.userId}`, finishRegisterBody);
+			await Axios.post(`/users/finish-register/${currentUser?.userId}`, finishRegisterBody as FinishRegisterRequest);
 
 			toast.success('Finished registration successfully');
 
@@ -46,7 +45,7 @@ const FirstLogin = () => {
 
 			await fetchUser();
 		} catch (e: any) {
-			toast.error('Error occurred during finish registration');
+			toast.error(`Error occurred during finish registration ${',cause ' + e.businessError}`);
 		}
 	};
 
@@ -86,4 +85,4 @@ const FirstLogin = () => {
 	);
 };
 
-export default FirstLogin;
+export default ClientFirstLogin;

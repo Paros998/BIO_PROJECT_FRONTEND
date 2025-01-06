@@ -5,13 +5,14 @@ import { VehicleModel } from '../../interfaces/models/Api';
 
 interface VehicleSafeProps {
 	vehicle: VehicleModel;
+	background?: string;
 }
 
-const VehicleSafe: FC<VehicleSafeProps> = ({ vehicle }) => {
+const VehicleSafe: FC<VehicleSafeProps> = ({ vehicle, background }) => {
 	const { model, plate, rentPerDayPrice, state, yearOfProduction, color } = vehicle;
 
 	return (
-		<Card bg={'dark'} text={'light'} className={`d-flex flex-row border-light border-1 height-300`}>
+		<Card bg={background ?? 'dark'} text={'light'} className={`d-flex flex-row border-light border-1 height-300`}>
 			<div className={`d-flex flex-column w-30 p-1`}>
 				<div className={`w-100`}>Paint job</div>
 				<div

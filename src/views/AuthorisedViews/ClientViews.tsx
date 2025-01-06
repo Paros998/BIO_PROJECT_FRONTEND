@@ -4,9 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { HomeRoute } from '../../routes/Routes';
+import { HomeRoute, MyRentedVehicles } from '../../routes/Routes';
+import MyRentedCars from '../../sites/Clients/MyRentedCars';
 import Home from '../../sites/Home/Home';
-import FirstLogin from '../../sites/Login/FirstLogin';
+import ClientFirstLogin from '../../sites/Login/ClientFirstLogin';
 
 const ClientViews = () => {
 	const { isPending, currentUser } = useCurrentUser();
@@ -23,7 +24,7 @@ const ClientViews = () => {
 	if (currentUser.firstLogin) {
 		return (
 			<Routes>
-				<Route path={HomeRoute} element={<FirstLogin />} />
+				<Route path={HomeRoute} element={<ClientFirstLogin />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>
@@ -33,6 +34,8 @@ const ClientViews = () => {
 	return (
 		<Routes>
 			<Route path={HomeRoute} element={<Home />} />
+
+			<Route path={MyRentedVehicles} element={<MyRentedCars />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>
