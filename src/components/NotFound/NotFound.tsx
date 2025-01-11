@@ -10,7 +10,7 @@ const NotFound = () => {
 
 			<EmojiExpressionlessFill className={`text-light spin-around`} fontSize={'30rem'} />
 
-			<h1 id={'not-found'} className={`gradient-color mt-lg-4 mt-md-2 mt-sm-1`}>
+			<h1 id={'not-found'} className={`text-danger mt-lg-4 mt-md-2 mt-sm-1`}>
 				Not Found 404
 			</h1>
 		</main>
