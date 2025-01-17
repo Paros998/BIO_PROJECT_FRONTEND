@@ -4,11 +4,20 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import Pending from '../../components/Pending/Pending';
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
-import { ClientIdVariable, ClientRentedCarsRoute, ClientsRoute, HomeRoute } from '../../routes/Routes';
+import {
+	ClientIdVariable,
+	ClientRentedCarsRoute,
+	ClientsRoute,
+	HomeRoute,
+	NewVehiclesRoute,
+	VehiclesRoute
+} from '../../routes/Routes';
 import ClientRentedCars from '../../sites/Clients/ClientRentedCars';
 import ManageClients from '../../sites/Clients/ManageClients';
 import Home from '../../sites/Home/Home';
 import EmployeeFirstLogin from '../../sites/Login/EmployeeFirstLogin';
+import AddNewVehicle from '../../sites/Vehicles/AddNewVehicle';
+import ManageVehicles from '../../sites/Vehicles/ManageVehicles';
 
 const EmployeeViews = () => {
 	const { isPending, currentUser } = useCurrentUser();
@@ -39,6 +48,10 @@ const EmployeeViews = () => {
 			<Route path={ClientsRoute} element={<ManageClients />} />
 
 			<Route path={ClientRentedCarsRoute + ClientIdVariable} element={<ClientRentedCars />} />
+
+			<Route path={VehiclesRoute} element={<ManageVehicles />} />
+
+			<Route path={NewVehiclesRoute} element={<AddNewVehicle />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>

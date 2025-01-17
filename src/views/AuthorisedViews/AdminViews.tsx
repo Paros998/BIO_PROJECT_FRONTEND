@@ -10,13 +10,17 @@ import {
 	ClientsRoute,
 	EmployeesRoute,
 	HomeRoute,
-	NewEmployeeRoute
+	NewEmployeeRoute,
+	NewVehiclesRoute,
+	VehiclesRoute
 } from '../../routes/Routes';
 import ClientRentedCars from '../../sites/Clients/ClientRentedCars';
 import ManageClients from '../../sites/Clients/ManageClients';
 import ManageEmployees from '../../sites/Employees/ManageEmployees';
 import NewEmployee from '../../sites/Employees/NewEmployee';
 import Home from '../../sites/Home/Home';
+import AddNewVehicle from '../../sites/Vehicles/AddNewVehicle';
+import ManageVehicles from '../../sites/Vehicles/ManageVehicles';
 
 const AdminViews = () => {
 	const { isPending, currentUser } = useCurrentUser();
@@ -41,6 +45,10 @@ const AdminViews = () => {
 			<Route path={ClientsRoute} element={<ManageClients />} />
 
 			<Route path={ClientRentedCarsRoute + ClientIdVariable} element={<ClientRentedCars />} />
+
+			<Route path={VehiclesRoute} element={<ManageVehicles />} />
+
+			<Route path={NewVehiclesRoute} element={<AddNewVehicle />} />
 
 			<Route path="*" element={<NotFound />} />
 		</Routes>

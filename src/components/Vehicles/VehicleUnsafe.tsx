@@ -17,7 +17,7 @@ const VehicleUnsafe: FC<VehicleSafeProps> = ({ vehicle, background }) => {
 				<div className={`w-100`}>Paint job</div>
 				<div
 					className={`mx-2 my-4 w-100 h-100 rounded-card-10 border-light border-1`}
-					style={{ backgroundColor: `#${color}ff` }}
+					style={{ backgroundColor: `${color}` }}
 				/>
 			</div>
 
