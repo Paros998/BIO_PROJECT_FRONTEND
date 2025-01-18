@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 import { useCurrentUser } from '../contexts/UserContext/UserContext';
 
-const base = process.env.REACT_APP_APP_SECURE ? 'https' : 'http';
+const base = process.env.REACT_APP_APP_SECURE_HTTP ? 'https' : 'http';
 
 export const baseUrl = `${base}://localhost:8080/`;
 export const endpointsPrefix = `api`;
