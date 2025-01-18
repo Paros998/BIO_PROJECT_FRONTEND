@@ -2,16 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { Col, Form, Row, Spinner } from 'react-bootstrap';
 import Pagination from '@mui/material/Pagination';
 
-import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { useFetchData } from '../../hooks/useFetchData';
-import { Role } from '../../interfaces/enums/Role';
 import { PageRequest, PageResponse, VehicleModel, VehicleState } from '../../interfaces/models/Api';
 
-import VehicleSafe from './VehicleSafe';
-import VehicleUnsafe from './VehicleUnsafe';
+import VehicleForEmployee from './VehicleForEmployee';
 
-const Vehicles = () => {
-	const { roles } = useCurrentUser();
+const EmployeeVehicles = () => {
 	const [page, setPage] = useState<number>(1);
 	const [state, setState] = useState<VehicleState>('READY_TO_RENT');
 
@@ -24,7 +20,7 @@ const Vehicles = () => {
 		};
 	}, [page, state]);
 
-	const [response, refreshVehicles, isPending] = useFetchData<PageResponse<VehicleModel>>(`/vehicles/search`, {
+	const [response, reFetch, isPending] = useFetchData<PageResponse<VehicleModel>>(`/vehicles/search`, {
 		params
 	});
 
@@ -52,35 +48,23 @@ const Vehicles = () => {
 			<div
 				className={`w-100 mt-3 h-100 justify-content-start d-flex flex-column align-items-center overflow-y-scroll thumb-slim thumb-info mb-2`}
 			>
-				{roles.includes(Role.RoleClient) && (
+				<div className={`d-flex flex-row align-items-center justify-content-center gap-2`}>
 					<h3 className={'text-light text-center pt-1 bg-secondary-dark py-1 px-2 rounded-card-10'}>
 						Available Vehicles
 					</h3>
-				)}
-
-				{!roles.includes(Role.RoleClient) && (
-					<div className={`d-flex flex-row align-items-center justify-content-center gap-2`}>
-						<h3 className={'text-light text-center pt-1 bg-secondary-dark py-1 px-2 rounded-card-10'}>
-							Available Vehicles
-						</h3>
-						<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
-							<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
-							<option value={'RENTED'}>RENTED</option>
-							<option value={'JUST_RETURNED'}>JUST_RETURNED</option>
-							<option value={'IN_REPAIR'}>IN_REPAIR</option>
-							<option value={'NEW'}>NEW</option>
-						</Form.Select>
-					</div>
-				)}
+					<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
+						<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
+						<option value={'RENTED'}>RENTED</option>
+						<option value={'JUST_RETURNED'}>JUST_RETURNED</option>
+						<option value={'IN_REPAIR'}>IN_REPAIR</option>
+						<option value={'NEW'}>NEW</option>
+					</Form.Select>
+				</div>
 
 				<Row className={'row-gap-3 pb-4 w-100'}>
 					{vehicles?.map((vehicle, k) => (
 						<Col key={k} xs={24} sm={12} md={6} xxl={4}>
-							{process.env.REACT_APP_APP_SECURE === 'true' ? (
-								<VehicleSafe vehicle={vehicle} refresh={refreshVehicles} />
-							) : (
-								<VehicleUnsafe vehicle={vehicle} refresh={refreshVehicles} />
-							)}
+							<VehicleForEmployee vehicle={vehicle} reFetch={reFetch} />
 						</Col>
 					))}
 				</Row>
@@ -99,4 +83,4 @@ const Vehicles = () => {
 	);
 };
 
-export default Vehicles;
+export default EmployeeVehicles;

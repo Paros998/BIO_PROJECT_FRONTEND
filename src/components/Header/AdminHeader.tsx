@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-import { ClientsRoute, EmployeesRoute, NewEmployeeRoute } from '../../routes/Routes';
+import { ClientsRoute, EmployeesRoute, NewEmployeeRoute, NewVehiclesRoute, VehiclesRoute } from '../../routes/Routes';
 
 const AdminHeader = () => {
 	const navigate = useNavigate();
@@ -15,10 +15,9 @@ const AdminHeader = () => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
-					<Dropdown.Item>All Vehicles</Dropdown.Item>
-					<Dropdown.Item>Rented Cars</Dropdown.Item>
+					<Dropdown.Item onClick={() => navigate(VehiclesRoute)}>Vehicles</Dropdown.Item>
 					<Dropdown.Item>Vehicles Payments</Dropdown.Item>
-					<Dropdown.Item>Register New Vehicle</Dropdown.Item>
+					<Dropdown.Item onClick={() => navigate(NewVehiclesRoute)}>Register New Vehicle</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
 

@@ -77,7 +77,7 @@ export interface PageRequest {
 	sortBy?: string;
 }
 
-export type VehicleState = 'RENTED' | 'JUST_RETURNED' | 'READY_TO_RENT' | 'IN_REPAIR' | 'NOT_INSURED' | 'NEW';
+export type VehicleState = 'RENTED' | 'JUST_RETURNED' | 'READY_TO_RENT' | 'IN_REPAIR' | 'NEW';
 
 export interface CommonUserData {
 	username: string;
@@ -100,3 +100,17 @@ export interface FinishFirstLoginRequest extends PasswordData {
 }
 
 export interface CreateEmployeeRequest extends FinishRegisterRequest, CommonUserData {}
+
+export interface AddVehicleRequest {
+	model: string;
+	plate: string;
+	color: string;
+	yearOfProduction: number;
+	rentPerDayPrice: string;
+}
+
+export interface CreateVehicleRentalRequest {
+	vehicleId: string;
+	clientId: string;
+	numberOfDays: number;
+}
