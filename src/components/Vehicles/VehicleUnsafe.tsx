@@ -1,15 +1,20 @@
 import React, { FC } from 'react';
 import { Card } from 'react-bootstrap';
 
+import { useCurrentUser } from '../../contexts/UserContext/UserContext';
+import { Role } from '../../interfaces/enums/Role';
 import { VehicleModel } from '../../interfaces/models/Api';
+import RentVehicleModal from '../Modal/RentVehicleModal';
 
 interface VehicleSafeProps {
 	vehicle: VehicleModel;
 	background?: string;
+	refresh?: () => Promise<void>;
 }
 
-const VehicleUnsafe: FC<VehicleSafeProps> = ({ vehicle, background }) => {
-	const { model, plate, rentPerDayPrice, state, yearOfProduction, color } = vehicle;
+const VehicleUnsafe: FC<VehicleSafeProps> = ({ vehicle, background, refresh }) => {
+	const { roles } = useCurrentUser();
+	const { vehicleId, model, plate, rentPerDayPrice, state, yearOfProduction, color } = vehicle;
 
 	return (
 		<Card bg={background ?? 'dark'} text={'light'} className={`d-flex flex-row border-light border-1 height-300`}>
@@ -38,6 +43,13 @@ const VehicleUnsafe: FC<VehicleSafeProps> = ({ vehicle, background }) => {
 					<Card.Text className={`text-trunc-4 ${!rentPerDayPrice && 'd-none'}`}>
 						<span dangerouslySetInnerHTML={{ __html: `Rent per day: ${rentPerDayPrice || 'Unknown'}$` }}></span>
 					</Card.Text>
+					{state === 'READY_TO_RENT' && roles.includes(Role.RoleClient) && (
+						<RentVehicleModal
+							vehicleId={vehicleId}
+							rentPerDay={rentPerDayPrice as unknown as number}
+							refresh={refresh}
+						/>
+					)}
 				</Card.Body>
 			</div>
 		</Card>

@@ -108,3 +108,9 @@ export interface AddVehicleRequest {
 	yearOfProduction: number;
 	rentPerDayPrice: string;
 }
+
+export interface CreateVehicleRentalRequest {
+	vehicleId: string;
+	clientId: string;
+	numberOfDays: number;
+}

@@ -24,7 +24,7 @@ const Vehicles = () => {
 		};
 	}, [page, state]);
 
-	const [response, , isPending] = useFetchData<PageResponse<VehicleModel>>(`/vehicles/search`, {
+	const [response, refreshVehicles, isPending] = useFetchData<PageResponse<VehicleModel>>(`/vehicles/search`, {
 		params
 	});
 
@@ -77,9 +77,9 @@ const Vehicles = () => {
 					{vehicles?.map((vehicle, k) => (
 						<Col key={k} xs={24} sm={12} md={6} xxl={4}>
 							{process.env.REACT_APP_APP_SECURE === 'true' ? (
-								<VehicleSafe vehicle={vehicle} />
+								<VehicleSafe vehicle={vehicle} refresh={refreshVehicles} />
 							) : (
-								<VehicleUnsafe vehicle={vehicle} />
+								<VehicleUnsafe vehicle={vehicle} refresh={refreshVehicles} />
 							)}
 						</Col>
 					))}

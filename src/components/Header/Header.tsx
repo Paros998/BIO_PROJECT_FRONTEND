@@ -25,14 +25,16 @@ const Header: FC<HeaderProps> = ({ children }) => {
 				{children}
 
 				<div className={`d-inline-flex justify-content-end`}>
-					<Button
-						variant={'outline-primary-dark'}
-						disabled={location?.pathname === HomeRoute}
-						className={`me-4`}
-						onClick={() => navigate(HomeRoute)}
-					>
-						Home
-					</Button>
+					{currentUser && (
+						<Button
+							variant={'outline-primary-dark'}
+							disabled={location?.pathname === HomeRoute}
+							className={`me-4`}
+							onClick={() => navigate(HomeRoute)}
+						>
+							Home
+						</Button>
+					)}
 
 					{currentUser && roles?.includes(Role.RoleClient) && (
 						<Button
