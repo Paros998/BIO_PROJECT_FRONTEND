@@ -34,9 +34,10 @@ const RentVehicleModal: FC<RentVehicleModalProps> = ({ rentPerDay, vehicleId, re
 				clientId: currentUser?.userId,
 				numberOfDays: numberOfDays
 			};
+
 			await Axios.post(`/rentals`, request);
 
-			toast.info('Car rental created successfully. Wait for an employee to approve the request.');
+			toast.info('Car rental created successfully. Contact employee desk for pickup details.');
 
 			navigate(MyRentedVehicles);
 			if (refresh) {
