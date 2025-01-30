@@ -41,8 +41,19 @@ const Vehicles = () => {
 
 	if (vehicles?.length === 0) {
 		return (
-			<div className={`d-flex mh-100 w-50 justify-content-center align-items-center p-2 bg-dark rounded-card-10`}>
+			<div
+				className={`d-flex flex-column gap-2 mh-100 w-50 justify-content-center align-items-center p-2 bg-dark rounded-card-10`}
+			>
 				<span className={'fw-bold fs-3 text-light text-center w-50'}>Vehicles not found. Try again later.</span>
+
+				<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
+					<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
+					<option value={'RENTED'}>RENTED</option>
+					<option value={'IN_REPAIR'}>IN_REPAIR</option>
+					<option value={'NEW'}>NEW</option>
+					<option value={'NOT_INSURED'}>NOT_INSURED</option>
+					<option value={'INSURED'}>INSURED</option>
+				</Form.Select>
 			</div>
 		);
 	}
@@ -66,9 +77,10 @@ const Vehicles = () => {
 						<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
 							<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
 							<option value={'RENTED'}>RENTED</option>
-							<option value={'JUST_RETURNED'}>JUST_RETURNED</option>
 							<option value={'IN_REPAIR'}>IN_REPAIR</option>
 							<option value={'NEW'}>NEW</option>
+							<option value={'NOT_INSURED'}>NOT_INSURED</option>
+							<option value={'INSURED'}>INSURED</option>
 						</Form.Select>
 					</div>
 				)}

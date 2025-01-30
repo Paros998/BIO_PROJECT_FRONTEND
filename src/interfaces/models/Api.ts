@@ -21,6 +21,7 @@ export interface VehicleModel {
 	yearOfProduction: number;
 	state: VehicleState;
 	rentPerDayPrice: string;
+	employeeActions: VehicleAction[];
 }
 
 export interface UserPersonalData {
@@ -77,7 +78,21 @@ export interface PageRequest {
 	sortBy?: string;
 }
 
-export type VehicleState = 'RENTED' | 'JUST_RETURNED' | 'READY_TO_RENT' | 'IN_REPAIR' | 'NEW';
+export type VehicleState =
+	| 'RENTED'
+	| 'JUST_RETURNED'
+	| 'READY_TO_RENT'
+	| 'IN_REPAIR'
+	| 'NEW'
+	| 'INSURED'
+	| 'NOT_INSURED';
+
+export type VehicleAction =
+	| 'INSURE'
+	| 'SEND_TO_REPAIRS'
+	| 'MAKE_READY_TO_RENT'
+	| 'RETURN_AND_SEND_TO_REPAIRS'
+	| 'RETURN_AND_MAKE_READY_TO_RENT';
 
 export interface CommonUserData {
 	username: string;
@@ -113,4 +128,32 @@ export interface CreateVehicleRentalRequest {
 	vehicleId: string;
 	clientId: string;
 	numberOfDays: number;
+}
+
+export interface EmployeeVehicleManagementRequest {
+	vehicleId: string;
+	employeeId: string;
+}
+
+export interface FinishRepairsRequest extends EmployeeVehicleManagementRequest {
+	chargeCustomer: boolean;
+	totalCost: string;
+	bankAccountNumber: string;
+	dueDate: string;
+}
+
+export interface InsureVehicleRequest extends EmployeeVehicleManagementRequest {
+	insuranceId: string;
+	insuranceCost: string;
+	bankAccountNumber: string;
+	dueDate: string;
+}
+
+export type MakeVehicleReadyToRentRequest = EmployeeVehicleManagementRequest;
+
+export type SendVehicleToRepairsRequest = EmployeeVehicleManagementRequest;
+
+export interface FinishVehicleRentalRequest {
+	rentalId: string;
+	employeeId: string;
 }

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Card } from 'react-bootstrap';
 
 import { VehicleModel } from '../../interfaces/models/Api';
+import EmployeeActions from '../Actions/EmployeeActions';
 
 interface VehicleForEmployeeProps {
 	vehicle: VehicleModel;
@@ -10,11 +11,7 @@ interface VehicleForEmployeeProps {
 }
 
 const VehicleForEmployee: FC<VehicleForEmployeeProps> = ({ vehicle, background, reFetch }) => {
-	const { model, plate, rentPerDayPrice, state, yearOfProduction, color, vehicleId } = vehicle;
-
-	const afterStatusChange = async () => {
-		await reFetch();
-	};
+	const { model, plate, rentPerDayPrice, state, yearOfProduction, color } = vehicle;
 
 	return (
 		<Card bg={background ?? 'dark'} text={'light'} className={`d-flex flex-row border-light border-1 height-300`}>
@@ -41,7 +38,7 @@ const VehicleForEmployee: FC<VehicleForEmployeeProps> = ({ vehicle, background, 
 			</div>
 
 			<div className={`d-flex flex-column w-20`}>
-				<></>
+				<EmployeeActions vehicle={vehicle} refresh={reFetch} />
 			</div>
 		</Card>
 	);
