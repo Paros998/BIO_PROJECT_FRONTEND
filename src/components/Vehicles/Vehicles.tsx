@@ -10,6 +10,25 @@ import { PageRequest, PageResponse, VehicleModel, VehicleState } from '../../int
 import VehicleSafe from './VehicleSafe';
 import VehicleUnsafe from './VehicleUnsafe';
 
+export const mapVehicleStateToLabel = (state: VehicleState): string => {
+	switch (state) {
+		case 'IN_REPAIR':
+			return 'In repairs';
+		case 'NEW':
+			return 'Newly added';
+		case 'INSURED':
+			return 'Insured vehicles';
+		case 'NOT_INSURED':
+			return 'Not insured vehicles';
+		case 'RENTED':
+			return 'Rented vehicles';
+		case 'READY_TO_RENT':
+			return 'Available to rent';
+		case 'JUST_RETURNED':
+			return 'Just returned';
+	}
+};
+
 const Vehicles = () => {
 	const { roles } = useCurrentUser();
 	const [page, setPage] = useState<number>(1);
@@ -47,12 +66,12 @@ const Vehicles = () => {
 				<span className={'fw-bold fs-3 text-light text-center w-50'}>Vehicles not found. Try again later.</span>
 
 				<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
-					<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
-					<option value={'RENTED'}>RENTED</option>
-					<option value={'IN_REPAIR'}>IN_REPAIR</option>
-					<option value={'NEW'}>NEW</option>
-					<option value={'NOT_INSURED'}>NOT_INSURED</option>
-					<option value={'INSURED'}>INSURED</option>
+					<option value={'READY_TO_RENT'}>{mapVehicleStateToLabel('READY_TO_RENT')}</option>
+					<option value={'RENTED'}>{mapVehicleStateToLabel('RENTED')}</option>
+					<option value={'IN_REPAIR'}>{mapVehicleStateToLabel('IN_REPAIR')}</option>
+					<option value={'NEW'}>{mapVehicleStateToLabel('NEW')}</option>
+					<option value={'NOT_INSURED'}>{mapVehicleStateToLabel('NOT_INSURED')}</option>
+					<option value={'INSURED'}>{mapVehicleStateToLabel('INSURED')}</option>
 				</Form.Select>
 			</div>
 		);
@@ -75,12 +94,12 @@ const Vehicles = () => {
 							Available Vehicles
 						</h3>
 						<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
-							<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
-							<option value={'RENTED'}>RENTED</option>
-							<option value={'IN_REPAIR'}>IN_REPAIR</option>
-							<option value={'NEW'}>NEW</option>
-							<option value={'NOT_INSURED'}>NOT_INSURED</option>
-							<option value={'INSURED'}>INSURED</option>
+							<option value={'READY_TO_RENT'}>{mapVehicleStateToLabel('READY_TO_RENT')}</option>
+							<option value={'RENTED'}>{mapVehicleStateToLabel('RENTED')}</option>
+							<option value={'IN_REPAIR'}>{mapVehicleStateToLabel('IN_REPAIR')}</option>
+							<option value={'NEW'}>{mapVehicleStateToLabel('NEW')}</option>
+							<option value={'NOT_INSURED'}>{mapVehicleStateToLabel('NOT_INSURED')}</option>
+							<option value={'INSURED'}>{mapVehicleStateToLabel('INSURED')}</option>
 						</Form.Select>
 					</div>
 				)}

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useCurrentUser } from '../../contexts/UserContext/UserContext';
 import { useFetchData } from '../../hooks/useFetchData';
@@ -15,8 +14,6 @@ type RentedVehiclesProps = {
 
 const RentedVehicles: FC<RentedVehiclesProps> = ({ clientId }) => {
 	const { roles } = useCurrentUser();
-	const navigate = useNavigate();
-	const location = useLocation();
 
 	const [response, fetchClientData, isPending] = useFetchData<ClientRentedVehicles>(
 		`/clients/${clientId}/rented-vehicles`

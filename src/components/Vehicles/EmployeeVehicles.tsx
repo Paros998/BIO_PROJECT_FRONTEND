@@ -6,6 +6,7 @@ import { useFetchData } from '../../hooks/useFetchData';
 import { PageRequest, PageResponse, VehicleModel, VehicleState } from '../../interfaces/models/Api';
 
 import VehicleForEmployee from './VehicleForEmployee';
+import { mapVehicleStateToLabel } from './Vehicles';
 
 const EmployeeVehicles = () => {
 	const [page, setPage] = useState<number>(1);
@@ -43,12 +44,12 @@ const EmployeeVehicles = () => {
 				<span className={'fw-bold fs-3 text-light text-center w-50'}>Vehicles not found. Try again later.</span>
 
 				<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
-					<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
-					<option value={'RENTED'}>RENTED</option>
-					<option value={'IN_REPAIR'}>IN_REPAIR</option>
-					<option value={'NEW'}>NEW</option>
-					<option value={'NOT_INSURED'}>NOT_INSURED</option>
-					<option value={'INSURED'}>INSURED</option>
+					<option value={'READY_TO_RENT'}>{mapVehicleStateToLabel('READY_TO_RENT')}</option>
+					<option value={'RENTED'}>{mapVehicleStateToLabel('RENTED')}</option>
+					<option value={'IN_REPAIR'}>{mapVehicleStateToLabel('IN_REPAIR')}</option>
+					<option value={'NEW'}>{mapVehicleStateToLabel('NEW')}</option>
+					<option value={'NOT_INSURED'}>{mapVehicleStateToLabel('NOT_INSURED')}</option>
+					<option value={'INSURED'}>{mapVehicleStateToLabel('INSURED')}</option>
 				</Form.Select>
 			</div>
 		);
@@ -64,12 +65,12 @@ const EmployeeVehicles = () => {
 						Available Vehicles
 					</h3>
 					<Form.Select onChange={(e) => setState(e.target.value as VehicleState)} value={state}>
-						<option value={'READY_TO_RENT'}>READY_TO_RENT</option>
-						<option value={'RENTED'}>RENTED</option>
-						<option value={'IN_REPAIR'}>IN_REPAIR</option>
-						<option value={'NEW'}>NEW</option>
-						<option value={'NOT_INSURED'}>NOT_INSURED</option>
-						<option value={'INSURED'}>INSURED</option>
+						<option value={'READY_TO_RENT'}>{mapVehicleStateToLabel('READY_TO_RENT')}</option>
+						<option value={'RENTED'}>{mapVehicleStateToLabel('RENTED')}</option>
+						<option value={'IN_REPAIR'}>{mapVehicleStateToLabel('IN_REPAIR')}</option>
+						<option value={'NEW'}>{mapVehicleStateToLabel('NEW')}</option>
+						<option value={'NOT_INSURED'}>{mapVehicleStateToLabel('NOT_INSURED')}</option>
+						<option value={'INSURED'}>{mapVehicleStateToLabel('INSURED')}</option>
 					</Form.Select>
 				</div>
 

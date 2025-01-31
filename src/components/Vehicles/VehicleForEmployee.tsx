@@ -4,6 +4,8 @@ import { Card } from 'react-bootstrap';
 import { VehicleModel } from '../../interfaces/models/Api';
 import EmployeeActions from '../Actions/EmployeeActions';
 
+import { mapVehicleStateToLabel } from './Vehicles';
+
 interface VehicleForEmployeeProps {
 	vehicle: VehicleModel;
 	background?: string;
@@ -28,7 +30,7 @@ const VehicleForEmployee: FC<VehicleForEmployeeProps> = ({ vehicle, background, 
 					<Card.Body>
 						<Card.Title className={`text-truncate`}>Model: {model || 'Unknown'}</Card.Title>
 						<Card.Text className={`text-truncate`}>Plate: {plate || 'Unknown'}</Card.Text>
-						<Card.Text className={`text-truncate`}>State: {state || 'Unknown'}</Card.Text>
+						<Card.Text className={`text-truncate`}>State: {mapVehicleStateToLabel(state) || 'Unknown'}</Card.Text>
 						<Card.Text className={`text-trunc-4`}>Year of production: {yearOfProduction || 'Unknown'}</Card.Text>
 						<Card.Text className={`text-trunc-4 ${!rentPerDayPrice && 'd-none'}`}>
 							Rent per day: {rentPerDayPrice || 'Unknown'}$
